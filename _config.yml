@@ -1,9 +1,9 @@
-remote_theme: pages-themes/leap-day@v0.2.0
+theme: jekyll-theme-leap-day
 excerpt_size: 350
 paginate: 5
 paginate_path: articles
+markdown: GFM
 plugins:
   - jemoji
   - jekyll-feed
   - jekyll-paginate
-  - jekyll-remote-theme 
