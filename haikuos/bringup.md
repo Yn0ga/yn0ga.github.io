@@ -4,6 +4,9 @@ layout: default
 
 # QEMU matrix
 
+Difference in Qemu version & parameters may leads to (very) different outcome so, here's my 2cts 
+
+ 
 ## Common commmand line : 
 qemu-system-ppc -L pc-bios -boot d -display sdl -m 1G -drive file=haiku-boot-cd.iso,format=raw,media=cdrom -drive file=haiku-minimum.image,format=raw,media=disk -prom-env "auto-boot?=true" -serial mon:stdio
 
@@ -52,3 +55,12 @@ qemu-system-ppc -L pc-bios -boot d -display sdl -m 1G -drive file=haiku-boot-cd.
 | 10.1.0 | ✅ | ✅ | ✅ | Win64 | -cpu G4 --nographic | |
 | 10.1.0 | ✅ | 🛑 | 🛑 | Win64 | -cpu G4 -M mac99 --nographic | |
 | 10.1.0 | ✅ | ✅ | ✅ | Win64 | -cpu G4 -device ati-vga | |
+
+## Partitions issue
+
+On my end, if I deviate from those parameters, QEMU locks up at this stage : 
+<img width="810" height="632" alt="image" src="https://github.com/user-attachments/assets/84fa996c-1331-4858-b399-3611d42515e7" />
+
+(Didn't check the precise error yet) 
+
+
