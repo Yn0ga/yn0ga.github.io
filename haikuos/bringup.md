@@ -8,10 +8,12 @@ Difference in Qemu version & parameters may leads to (very) different outcome so
 
  
 ## Common commmand line : 
+```
 qemu-system-ppc -L pc-bios -boot d -display sdl -m 1G -drive file=haiku-boot-cd.iso,format=raw,media=cdrom -drive file=haiku-minimum.image,format=raw,media=disk -prom-env "auto-boot?=true" -serial mon:stdio
+```
 
 ## Parameter matrix : 
-| Version | Host OS | Bootloader | Partitions | Kernel | Parameters | Details |
+| Version | Bootloader | Partitions | Kernel | Host OS | Parameters | Details |
 | :---: | :---: | :---: | :---: | :---: | :--- | :---: |
 | 7.1.0 | ✅ | ✅ | ✅ | Win64 | | CPU type PowerPC,750 |
 | 7.1.0 | ✅ | ✅ | ✅ | Win64 | --nographic | CPU type PowerPC,750 |
@@ -62,5 +64,21 @@ On my end, if I deviate from those parameters, QEMU locks up at this stage :
 <img width="810" height="632" alt="image" src="https://github.com/user-attachments/assets/84fa996c-1331-4858-b399-3611d42515e7" />
 
 (Didn't check the precise error yet) 
+
+# TL;DR: 
+
+Regardless of your host OS (windows or linux), your qemu command line should looks like this : 
+
+For graphical mode 
+```
+qemu-system-ppc -L pc-bios -boot d -display sdl -m 1G -serial mon:stdio -device ati-vga -prom-env "auto-boot?=true" -drive file=haiku-boot-cd.iso,format=raw,media=cdrom -drive file=haiku-minimum.image,format=raw,media=disk" 
+```
+
+For command line mode 
+
+```
+qemu-system-ppc -L pc-bios -boot d -display sdl -m 1G -serial mon:stdio -device ati-vga --nographic -prom-env "auto-boot?=true" -drive file=haiku-boot-cd.iso,format=raw,media=cdrom -drive file=haiku-minimum.image,format=raw,media=disk" 
+```
+
 
 
