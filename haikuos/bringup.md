@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# QEmu matrix
+# QEMU matrix
 
 ## Common commmand line : 
 qemu-system-ppc -L pc-bios -boot d -display sdl -m 1G -drive file=haiku-boot-cd.iso,format=raw,media=cdrom -drive file=haiku-minimum.image,format=raw,media=disk -prom-env "auto-boot?=true" -serial mon:stdio
